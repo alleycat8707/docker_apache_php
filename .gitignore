@@ -1,7 +1,6 @@
 *.iml
 .idea/*
 mysql_data/*
-*.yml
 
 .DS_Store
 
@@ -30,3 +29,5 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 *.stTheme.cache
 *.sublime-workspace
 *.sublime-project
+*.yml
+docker-compose.yml
