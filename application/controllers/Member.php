@@ -31,25 +31,25 @@ class Member extends REST_Controller {
         $tot_page = ceil($tot_cnt/$limit);
 
         //DB result 확인
-        if ($members)
-        {
-            // response 생성 메서드종료 성공
-            $message = [
-                'tot_page' => $tot_page,
-                'cur_page' => $page,
-                'members' => $members
-            ];
-            $this->response($message, REST_Controller::HTTP_OK);
-        }
-        else
-        {
+        if ($members) {
+            if ($id) {
+                $this->response($members, REST_Controller::HTTP_OK);
+            }else {
+                $message = [
+                    'tot_page' => $tot_page,
+                    'cur_page' => $page,
+                    'members' => $members
+                ];
+                $this->response($message, REST_Controller::HTTP_OK);
+            }
+
+        }else{
             // response 생성 메서드종료 실패 결과없음
             $this->response([
                 'status' => FALSE,
                 'message' => '결과가 없습니다.'
             ], REST_Controller::HTTP_NOT_FOUND);
         }
-
     }
 
     public function members_put()
